@@ -1,10 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define SIZE 5
 
+
+int length(char *list)
+{
+    int i = 0; int cont = 0;
+
+    while (1)
+    {
+        if (list[i] == '\0') break;
+        else cont++;
+        i++;
+    }
+    
+    return cont;
+}
 
 void add_element(char *list, char element)
 {
+
+    if (length(list) == SIZE)
+    {
+        printf("This list is full!\n");
+        return;
+    } 
+
+
     int i = 0;
 
     while (list[i] != '\0') i++;
@@ -30,12 +53,12 @@ void remove_element(char *list, char element)
         }
         i++;
     }
-    printf("This element not was found!");
+    printf("This element not was found!\n");
 }
 
 char head(char *list)
 {
-    if (list[0] == '\0') printf("The list is empty!");
+    if (list[0] == '\0') printf("The list is empty!\n");
     else return list[0];
 
     return -1;
@@ -43,7 +66,7 @@ char head(char *list)
 
 char tail(char *list)
 {
-    if (list[0] == '\0') printf("The list is empty!");
+    if (list[0] == '\0') printf("The list is empty!\n");
     else
     {
         int i = 0;
@@ -54,20 +77,6 @@ char tail(char *list)
         }
     }
     return -1;
-}
-
-int length(char *list)
-{
-    int i = 0; int cont = 0;
-
-    while (1)
-    {
-        if (list[i] == '\0') break;
-        else cont++;
-        i++;
-    }
-    
-    return cont;
 }
 
 void show(char *list)
@@ -125,13 +134,30 @@ char *link(char *vector1, char *vector2)
     return vector3;
 }
 
+void selection_sort(char *list)
+{
+    for (int i = 0; i < length(list) - 1; i++)
+    {
+        for (int j = i + 1; j < length(list) ; j++)
+        {
+            if (list[i] > list[j])
+            {
+                char aux = list[j];
+                list[j] = list[i];
+                list[i] = aux;
+            
+            }
+        }
+    }
+}
+
 void reverse(char *list)
 {
     int i = 0; int j = length(list)-1;
 
     while(i < length(list)/2)
     {
-        int aux = list[j];
+        char aux = list[j];
         list[j] = list[i];
         list[i] = aux;
         i++; j--;
@@ -140,5 +166,17 @@ void reverse(char *list)
 
 int main()
 {
+
+    char list[SIZE] = "0234";
+
+    add_element(list, '5');
+    //add_element(list, '6');
+
+    show(list);
+
+    reverse(list);
+
+    show(list);
+
     return 0;
 }
