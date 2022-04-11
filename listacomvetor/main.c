@@ -134,21 +134,30 @@ char *link(char *vector1, char *vector2)
     return vector3;
 }
 
-void selection_sort(char *list)
+void selection_sort(char *list, int c) // 0 == small for larger or any number other than one == larger for small
 {
+    
     for (int i = 0; i < length(list) - 1; i++)
     {
-        for (int j = i + 1; j < length(list) ; j++)
+        for (int j = i + 1; j < length(list); j++)
         {
-            if (list[i] > list[j])
+            if (list[i] > list[j] && c == 0)
             {
                 char aux = list[j];
                 list[j] = list[i];
                 list[i] = aux;
-            
+                
             }
+            else if (list[i] < list[j] && c != 0)
+            {
+                char aux = list[j];
+                list[j] = list[i];
+                list[i] = aux;
+            }
+            
         }
     }
+
 }
 
 void reverse(char *list)
@@ -167,16 +176,22 @@ void reverse(char *list)
 int main()
 {
 
-    char list[SIZE] = "0234";
+    char list[SIZE] = "0943";
 
-    add_element(list, '5');
+    add_element(list, '1');
     //add_element(list, '6');
 
-    show(list);
+    //show(list);
 
-    reverse(list);
+    //reverse(list);
 
+    //show(list);
+
+    selection_sort(list, 0);
     show(list);
+    selection_sort(list, 1);
+    show(list);
+    
 
     return 0;
 }
