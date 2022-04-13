@@ -14,7 +14,6 @@ int length(char *list)
         else cont++;
         i++;
     }
-    
     return cont;
 }
 
@@ -26,7 +25,6 @@ void add_element(char *list, char element)
         printf("That list is full!\n");
         return;
     } 
-
 
     int i = 0;
 
@@ -106,7 +104,6 @@ void check(char *list, char element)
             }
             i++; 
         }
-        
     }
     printf("That element no exist in the list!\n");
 }
@@ -153,11 +150,9 @@ void selection_sort(char *list, int c) // 0 == small for larger or any number ot
                 char aux = list[j];
                 list[j] = list[i];
                 list[i] = aux;
-            }
-            
+            }   
         }
     }
-
 }
 
 void reverse(char *list)
