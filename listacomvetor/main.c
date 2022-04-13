@@ -23,7 +23,7 @@ void add_element(char *list, char element)
 
     if (length(list) == SIZE)
     {
-        printf("This list is full!\n");
+        printf("That list is full!\n");
         return;
     } 
 
@@ -53,7 +53,7 @@ void remove_element(char *list, char element)
         }
         i++;
     }
-    printf("This element not was found!\n");
+    printf("That element not was found!\n");
 }
 
 char head(char *list)
@@ -101,14 +101,14 @@ void check(char *list, char element)
         while (i < length(list)){
             if (list[i] == element)
             {
-                printf("This element exist in the list!\n");
+                printf("That element exist in the list!\n");
                 return;
             }
             i++; 
         }
         
     }
-    printf("This element no exist in the list!\n");
+    printf("That element no exist in the list!\n");
 }
 
 char *link(char *vector1, char *vector2)
