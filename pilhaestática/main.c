@@ -6,7 +6,6 @@
 #define MAX 5
 
 /*
-
 Descrição:
     Pilhas em programação são estruturas de dados do tipo LIFO(last-in first-out). Uma pilha
     contém uma sequência de elementos do mesmo tipo, podendo ser feita com alocação
@@ -49,25 +48,25 @@ int pilha_vazia(Pilha *p)
     else return 0;
 }
 
+
 void push(Pilha *p, int valor)
 {
     if (p->topo+1 == MAX){
         printf("Erro! A pilha está cheia.\n");
         return;
     }
-    p->topo = p->topo+1;
-    p->dados[p->topo] = valor;
+    p->dados[++p->topo] = valor;
 }
 
 void pop(Pilha *p)
 {
     if (pilha_vazia(p)) printf("Erro! A pilha está vazia.\n");
-    else p->topo = p->topo-1;
+    else p->topo--;
 }
 
 int tamanho_pilha(Pilha *p)
 {
-    return p->topo+1;
+    return p->topo++;
 }
 
 int top(Pilha *p)
@@ -85,5 +84,4 @@ void print(Pilha *p)
 int main()
 {
     Pilha *p = cria_pilha();
-
 }
