@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 typedef struct node{
     int info;
@@ -40,20 +42,35 @@ void insert_inbegin(List *l, int element)
 
 void insert_inend(List *l, int element)
 {
-      Aluno *p = (Aluno*) malloc(sizeof(Aluno));
-        p = l->head;
-        while(p->prox != NULL) p = p->prox;
+    Node *p = (Node*) malloc(sizeof(Node));
+    for (p = l->head; p != NULL; p = p->next);
         
-        Aluno *novo = (Aluno*) malloc(sizeof(Aluno));
-        strcpy(novo->nome, nome);
-        novo->prioridade = prioridade;
-        l->nalunos++;
-        p->prox = novo;
+    Node *new = (Node*) malloc(sizeof(Node));
+    new->info = element;
+    p->next = new;
+    l->nelements++;
+}
+
+void print(List *l)
+{
+    Node *p = (Node*) malloc(sizeof(Node));
+    
+    for (p = l->head; p != NULL; p = p->next) printf("%d\n", p->info);
 }
 int main()
 {
+    List *list = new_list();
+    
+    if (list->nelements == 0)
+    {
+        insert_firstelement(list, 2);    
+    }
+    print(list);
+    //insert_inbegin(list, 1);
+    //print(list);
+    insert_inend(list, 3);
+    print(list);
     
     
-
     return 0;
 } 
