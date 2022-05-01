@@ -24,7 +24,6 @@ List *new_list(void)
 
 void insert_inbegin(List *l, int element)
 {
-
     Node *new = (Node*) malloc(sizeof(Node));
     new->info = element;
 
@@ -39,7 +38,6 @@ void insert_inbegin(List *l, int element)
         new->next = l->head;
         l->head = new;
     }
-
     l->nelements++;
 }
 
@@ -60,7 +58,6 @@ void insert_inend(List *l, int element)
         l->tail->next = new;
         l->tail = new;
     }
-
     l->nelements++;
 }
 
@@ -107,7 +104,6 @@ void remove_oneelement(List *l, int element)
         l->nelements--;
     }
     else printf("Element not found!\n");
-    
 }
 
 void print(List *l)
@@ -119,11 +115,10 @@ void print(List *l)
         printf("The List is empty\n");
         return;
     }
-    
     for (p = l->head; p != NULL; p = p->next)
          printf("%d\n", p->info);
-
 }
+
 int main()
 {
     List *list = new_list();
