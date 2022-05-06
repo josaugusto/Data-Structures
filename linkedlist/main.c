@@ -112,7 +112,7 @@ void remove_oneelement(List *l, int element)
 
 void print(List *l)
 {
-    Node *p = l->head;
+    Node *p;
 
     if (l->nelements == 0)
     {
