@@ -56,7 +56,7 @@ void insert_inend(List *l, int element)
     }
     else
     {
-        new->next == NULL;
+        new->next = NULL;
         l->tail->next = new;
         l->tail = new;
     }
