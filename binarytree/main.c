@@ -9,6 +9,11 @@ typedef struct node
 
 }Node;
 
+typedef struct 
+{
+    Node *root;
+}Tree;
+
 Node *new_node(int value)
 {
     Node *new = (Node*) malloc(sizeof(Node));
@@ -18,42 +23,64 @@ Node *new_node(int value)
     return new;
 };
 
-int insert_left(Node *root, int value)
+void insert_right(Node *no, int value);
+
+void insert_left(Node *no, int value)
 {
-    if (root->left == NULL)
+    if (no->left == NULL)
+        no->left = new_node(value);
+    else
     {
-        root->left = new_node(value);
-        return 1;
+        if (value < no->left->info) insert_left(no->left, value);
+        else if (value > no->left->info) insert_right(no->right, value);
+    } 
+}
+
+void insert_right(Node *no, int value)
+{
+    if (no->right == NULL)
+        no->right = new_node(value);
+    else
+    {
+       if (value < no->right->info) insert_left(no->left, value);
+       else if (value > no->right->info) insert_right(no->right, value); 
+    } 
+}
+
+void insert(Tree *t, int value)
+{
+    if (t->root == NULL)
+        t->root = new_node(value);
+    else
+    {
+        if (value < t->root->info) insert_left(t->root, value);
+        else if (value > t->root->info) insert_right(t->root, value);
     }
-    else insert_left(root->left, value);
-
-    return 0;
 }
 
-int insert_right(Node *root, int value)
+int search(Node *root, int value)
 {
-    if (root->right == NULL)
-    {
-        root->right = new_node(value);
-        return 1;
-    }else insert_right(root->right, value);
-
-    return 0;
-}
-
-void show_tree(Node *root)
-{
-        
+        if (root == NULL) return 0;
+        else if (value == root->info) return 1;
+        else
+        {
+            if (value < root->info) return search(root->left, value);
+            else return search(root->right, value);
+        }
 }
 
 int main()
 {
-    Node *root = new_node(1); 
+    Tree *tree = (Tree*) malloc(sizeof(tree));
+    tree->root = NULL;
 
-    insert_left(root, 2);
-    insert_right(root, 3);
-    insert_left(root, 2);
-    insert_right(root, 3);
-
+    insert(tree, 1);
+    insert(tree, 2);
+    insert(tree, 3);
+    insert(tree, 4);
+    insert(tree, 5);
+    insert(tree, 6);
+    insert(tree, 7);
+    printf("%d\n", search(tree->root, 2));
     return 0;
 }
