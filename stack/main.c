@@ -10,15 +10,14 @@ typedef struct node
 
 typedef struct
 {
-    int topo;
-    Node *firstin;
+    int n;
+    Node *top;
 }Stack;
 
 Stack *newStack()
 {
     Stack *s = (Stack*) malloc(sizeof(Stack));
-    s->topo = -1;
-    s->firstin = NULL;
+    s->top = NULL;
     return s;
 }
 
@@ -32,42 +31,45 @@ Node *newNode(int value)
 
 void push(Stack *s, int value)
 {
-    if (s->firstin == NULL) s->firstin = newNode(value);
+    if (s->top == NULL) s->top = newNode(value);
     else
     {
-        Node *p = s->firstin;
-        while(p != NULL)
-            p = p->next;
-        p->next = newNode(value);
-        s->topo++;
+        Node *new = newNode(value);
+        new->next = s->top;
+        s->top = new;
     }
 }
 
-void pop(Stack *s, int value)
+void pop(Stack *s)
 {
-    Node *p = s->firstin;
-
+    if (s->top == NULL) printf("This stack was empty.");
+    else
+    {
+        Node *aux = s->top;
+        s->top = aux->next;
+        free(aux);
+    }
 }
 
 void showStack(Stack *s)
 {
-    Node *p = s->firstin;
-
-    while(p != NULL)
+    for (Node *p = s->top; p != NULL; p = p->next)
     {
         printf("%d", p->info);
-        p = p->next;
+        printf("\n");
     }
-
 }
 
 int main()
 {
     Stack *stack = newStack();
 
+    push(stack, 2);
+    push(stack, 3);
     push(stack, 4);
-    //push(stack, 5);
-    //push(stack, 7);
+    push(stack, 5);
+    //showStack(stack);
+    pop(stack);
     showStack(stack);
 
     return 0;
