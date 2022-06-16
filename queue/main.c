@@ -13,6 +13,7 @@ typedef struct queue
 {
     int n;
     Node *begin;
+    Node *end;
 
 }Queue;
 
@@ -28,17 +29,23 @@ Queue *newQueue()
 {
     Queue *q = (Queue*) malloc(sizeof(Queue));
     q->begin = NULL;
+    q->end = NULL;
     return q;
 }
 
-void insert()
+void inserir(Queue *q, int value)
 {
-
+    if (q->begin == NULL) printf("This queue was empty.");
+    else
+    {
+        Node *new = newNode(value);
+        q->begin
+    }
 }
 
-void remove()
+void remover(Queue *q)
 {
-
+    if (q->begin == NULL) printf("This queue was empty.");
 }
 
 void showQueue(Queue *q)
@@ -50,7 +57,7 @@ void showQueue(Queue *q)
     }
     else
     {
-        
+          
     }
 }
 
