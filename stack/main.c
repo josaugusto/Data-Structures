@@ -55,10 +55,14 @@ void pop(Stack *s)
 
 void showStack(Stack *s)
 {
-    for (Node *p = s->top; p != NULL; p = p->next)
+    if (s->top == NULL) printf("This stack was empty.");
+    else
     {
-        printf("%d", p->info);
-        printf("\n");
+        for (Node *p = s->top; p != NULL; p = p->next)
+        {
+            printf("%d", p->info);
+            printf("\n");
+        }
     }
 }
 
