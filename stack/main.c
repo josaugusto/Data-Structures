@@ -37,6 +37,7 @@ void push(Stack *s, int value)
         Node *new = newNode(value);
         new->next = s->top;
         s->top = new;
+        s->n++;
     }
 }
 
@@ -48,6 +49,7 @@ void pop(Stack *s)
         Node *aux = s->top;
         s->top = aux->next;
         free(aux);
+        s->n--;
     }
 }
 
