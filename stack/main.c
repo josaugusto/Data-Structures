@@ -43,7 +43,7 @@ void push(Stack *s, int value)
 
 void pop(Stack *s)
 {
-    if (s->top == NULL) printf("This stack was empty.");
+    if (s->top == NULL) printf("This stack was empty.\n");
     else
     {
         Node *aux = s->top;
@@ -55,7 +55,7 @@ void pop(Stack *s)
 
 void showStack(Stack *s)
 {
-    if (s->top == NULL) printf("This stack was empty.");
+    if (s->top == NULL) printf("This stack was empty.\n");
     else
     {
         for (Node *p = s->top; p != NULL; p = p->next)
@@ -71,11 +71,11 @@ int main()
     Stack *stack = newStack();
 
     push(stack, 2);
-    push(stack, 3);
-    push(stack, 4);
-    push(stack, 5);
+    //push(stack, 3);
+    //push(stack, 4);
+    //push(stack, 5);
     //showStack(stack);
-    pop(stack);
+    //pop(stack);
     showStack(stack);
 
     return 0;
