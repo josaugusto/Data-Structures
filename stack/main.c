@@ -69,14 +69,5 @@ void showStack(Stack *s)
 int main()
 {
     Stack *stack = newStack();
-
-    push(stack, 2);
-    //push(stack, 3);
-    //push(stack, 4);
-    //push(stack, 5);
-    //showStack(stack);
-    //pop(stack);
-    showStack(stack);
-
     return 0;
 }
