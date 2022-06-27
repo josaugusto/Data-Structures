@@ -127,30 +127,5 @@ void print(List *l)
 int main()
 {
     List *list = new_list();
-
-    insert_inbegin(list, 1);
-    insert_inbegin(list, 0);
-    insert_inbegin(list, -1);
-    insert_inend(list, 2);
-    insert_inend(list, 3);
-    print(list);
-    printf("Length: %d\n", list->nelements);
-    remove_oneelement(list, -1);
-    print(list);
-    printf("Length: %d\n", list->nelements);
-    remove_oneelement(list, 1);
-    print(list);
-    printf("Length: %d\n", list->nelements);
-    remove_oneelement(list, 1);
-    print(list);
-    printf("Length: %d\n", list->nelements);
-    remove_oneelement(list, 3);
-    print(list);
-    printf("Length: %d\n", list->nelements);
-    remove_oneelement(list, 0);
-    print(list);
-    remove_oneelement(list, 2);
-    print(list);
-
     return 0;
 } 
